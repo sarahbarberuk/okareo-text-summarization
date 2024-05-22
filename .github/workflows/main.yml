@@ -31,4 +31,5 @@ jobs:
       - name: Text Summarization Evaluation
         run: |
           okareo -v
+          okare init --language python --force
           okareo run -f text_summarization
