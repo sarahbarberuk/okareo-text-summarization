@@ -1,7 +1,5 @@
 OKAREO_API_KEY = "<YOUR_OKAREO_API_KEY>"
 OPENAI_API_KEY = "<YOUR_OPENAI_API_KEY>"
-# pip install okareo
-#pip install openai
 
 # Simple summarization prompt using OpenAI'a GPT 3.5 Turbo model
 from openai import OpenAI
