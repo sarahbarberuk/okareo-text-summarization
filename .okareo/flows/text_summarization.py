@@ -1,5 +1,6 @@
-OKAREO_API_KEY = "<YOUR_OKAREO_API_KEY>"
-OPENAI_API_KEY = "<YOUR_OPENAI_API_KEY>"
+import os
+OKAREO_API_KEY = os.environ.get('OKAREO_API_KEY', "<YOUR_OKAREO_API_KEY>")
+OPENAI_API_KEY = os.environ.get('OPENAI_API_KEY', "<YOUR_OPENAI_API_KEY>")
 
 # Simple summarization prompt using OpenAI'a GPT 3.5 Turbo model
 from openai import OpenAI
@@ -22,7 +23,7 @@ Summarize the text in 1 simple sentence.
 # Evaluate the scenario and model combination and then get a link to the results on Okareo
 import random
 import string
-import os
+
 import tempfile
 from okareo import Okareo
 from okareo.model_under_test import OpenAIModel
