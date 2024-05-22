@@ -25,10 +25,15 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Okareo Action
-        uses: okareo-ai/okareo-action@v2.4
+      - name: Install Okareo
+        run: |
+          curl -O -L https://github.com/okareo-ai/okareo-cli/releases/download/v0.0.13/okareo_0.0.13_linux_386.tar.gz
+          export OKAREO_PATH="~/development/okareo"
+          export PATH="$PATH:$OKAREO_PATH/bin"
+          okareo -v
       
       - name: Text Summarization Evaluation
         run: |
+
           okareo -v
           okareo run -f text_summarization
