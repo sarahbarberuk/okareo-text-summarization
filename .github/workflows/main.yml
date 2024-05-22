@@ -1,0 +1,76 @@
+name: Nightly Demo Update
+env:
+  SKIP_YARN_COREPACK_CHECK: true
+  DEMO_BUILD_ID: ${{ github.run_number }}
+  OKAREO_API_KEY: ${{ secrets.OKAREO_API_KEY }}
+  OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+  
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: '0 7 * * *'
+
+jobs:
+  summarization:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./demos
+    permissions:
+      contents: 'read'
+      id-token: 'write'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Okareo Action
+        uses: okareo-ai/okareo-action@v2.4
+      
+      - name: Summarization Evaluation
+        run: |
+          okareo -v
+          okareo run -f summarization
+
+  classification:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./demos
+    permissions:
+      contents: 'read'
+      id-token: 'write'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Okareo Action
+        uses: okareo-ai/okareo-action@v2.3
+
+      - name: Classification Evaluation
+        run: |
+          okareo -v
+          okareo run -f classification
+
+  reporting:
+    runs-on: ubuntu-latest
+    if: always()
+    needs: [summarization, classification]
+    defaults:
+      run:
+        working-directory: ./demos
+    permissions:
+      contents: 'read'
+      id-token: 'write'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Okareo Action
+        uses: okareo-ai/okareo-action@v2.3
+      
+      - name: Evaluation Reports
+        run: |
+          okareo -v
+          okareo run -f text_summarization
