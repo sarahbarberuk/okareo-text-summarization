@@ -28,49 +28,7 @@ jobs:
       - name: Okareo Action
         uses: okareo-ai/okareo-action@v2.4
       
-      - name: Summarization Evaluation
-        run: |
-          okareo -v
-          okareo run -f summarization
-
-  classification:
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./demos
-    permissions:
-      contents: 'read'
-      id-token: 'write'
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Okareo Action
-        uses: okareo-ai/okareo-action@v2.3
-
-      - name: Classification Evaluation
-        run: |
-          okareo -v
-          okareo run -f classification
-
-  reporting:
-    runs-on: ubuntu-latest
-    if: always()
-    needs: [summarization, classification]
-    defaults:
-      run:
-        working-directory: ./demos
-    permissions:
-      contents: 'read'
-      id-token: 'write'
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Okareo Action
-        uses: okareo-ai/okareo-action@v2.3
-      
-      - name: Evaluation Reports
+      - name: Text Summarization Evaluation
         run: |
           okareo -v
           okareo run -f text_summarization
