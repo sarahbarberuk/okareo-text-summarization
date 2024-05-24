@@ -1,6 +1,6 @@
 name: Project Name 
-api-key: "<YOUR_OKAREO_API_KEY>"
-project-id: "<YOUR_OKAREO_PROECT_ID>"
+api-key: ${OKARE_API_KEY}
+project-id: ${OKAREO_PROJECT_ID}
 language: "python"
 run:
   flows:
