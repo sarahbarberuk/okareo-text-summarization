@@ -1,5 +1,5 @@
 name: Project Name 
-api-key: ${OKARE_API_KEY}
+api-key: ${OKAREO_API_KEY}
 project-id: ${OKAREO_PROJECT_ID}
 language: "python"
 run:

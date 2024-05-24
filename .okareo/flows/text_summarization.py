@@ -24,7 +24,6 @@ Summarize the text in 1 simple sentence.
 import random
 import string
 
-
 import tempfile
 from okareo import Okareo
 from okareo.model_under_test import OpenAIModel
