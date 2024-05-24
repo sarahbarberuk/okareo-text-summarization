@@ -2,6 +2,7 @@ import os
 OKAREO_API_KEY = os.environ["OKAREO_API_KEY"]
 OPENAI_API_KEY = os.environ["OPENAI_API_KEY"]
 
+
 # Simple summarization prompt using OpenAI'a GPT 3.5 Turbo model
 from openai import OpenAI
 client = OpenAI(api_key=OPENAI_API_KEY)
