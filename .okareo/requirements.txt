@@ -1,0 +1,2 @@
+# Python dependencies to run the Okareo flows
+openai
