@@ -1,3 +1,5 @@
-# Python dependencies to run the Okareo flows
-okareo
-openai
+
+	# Python requirements to evaluate models with Okareo
+	okareo
+	openai
+	
