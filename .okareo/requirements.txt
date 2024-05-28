@@ -1,2 +1,3 @@
 # Python dependencies to run the Okareo flows
+okareo
 openai
