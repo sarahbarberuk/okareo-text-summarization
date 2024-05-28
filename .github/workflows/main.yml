@@ -30,6 +30,6 @@ jobs:
       
       - name: Text Summarization Evaluation
         run: |
-          pip install -r requirements.txt 
+          pip install -r ./.okareo/requirements.txt 
           okareo -v
           okareo run -f text_summarization
